@@ -29,22 +29,7 @@ export class Data {
       })
     );
   }
-  /*  buildRequestObservale() {
-    return fromFetch(
-      'http://localhost:3000/books'
-    ).pipe(
-      // switchMap : la seule réponse qui nous intéresse est la dernière
-      switchMap((response) => {
-        if (response.ok) return response.json()
-        else return of({ error: true, message: `Error ${response.status}` })
-      }),
-      catchError((err) => {
-        console.error(err)
-    
-        return of({ error: true, message: err.message })
-      })
-    )
-  } */
+
   getList(): Observable<Book> {
     return this.list;
   }

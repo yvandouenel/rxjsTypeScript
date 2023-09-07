@@ -5,4 +5,6 @@ json-server --watch db.json
 # Faire un build : 
 npx webpack build
 # Voir le résultat dans la console : 
-node .\dist\bundle.js
+node dist/bundle.js 
+# Voir le résultat dans le navigateur
+npm start

@@ -1,7 +1,9 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 const config = {
   mode: "development",
+  devServer: {open: true},
   // Point d'entrée de Webpack
   entry: {
     myApp: ["./src/main.ts"],
@@ -13,6 +15,10 @@ const config = {
         exclude: /node_modules/, // sans prendre en compte les dépendances
         use: "ts-loader",
       },
+      {
+        test: /.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      }
     ],
   },
   resolve: {
@@ -22,6 +28,8 @@ const config = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
   },
+  
+  plugins: [new HtmlWebpackPlugin({ template: __dirname + '/src/index.html' })],
 };
 
 module.exports = config;
