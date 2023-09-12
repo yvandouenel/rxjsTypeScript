@@ -1,15 +1,75 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test RxJs</title>
-</head>
-<body>
-  <div id="root" class="container">
-    <button id="btn-test" class="btn btn-warning">Bouton test event</button>
-  </div>
-  
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test RxJs</title>
+  </head>
+  <body>
+    <div id="root" class="container">
+      <h1>TP Observables</h1>
+      <section id="own-observable">
+        <h2>Observable from scratch</h2>
+        <p>Créez votre propre observable via l'appel du constructeur (new Observable()).<br>Utilisez la fonction setInterval pour que l'obersvable "émette" une valeur (de 0 à 9) toutes les secondes. <br> Après 10 émissions, utilisez la méthode complete pour stopper l'observable. <br> Souscrivez à cet observable et faites en sorte que cette souscription permette :
+        <ul>
+          <li>d'afficher dans la console la valeur chaque fois qu'elle est émise</li>
+          <li>d'afficher dans la console une erreur le cas échéant. Profitez-en pour vous désabonner de l'observable.</li>
+          <li>d'afficher dans la console un message dans le cas où l'observable est "completed". Profitez-en pour vous désabonner de l'observable.</li>
+        </ul></p>
+        <p>Dans une deuxième temps, utiliser les fonctions pipe et filter pour n'afficher que les valeurs paires.</p>
+      </section>
+      <section id="button">
+        <h2>Observables provenant d'un événement</h2>
+        <p>
+          Vous allez créer un bouton ayant pour label "Bouton cliquable" qui sera la source d'un observable. Le bouton est une instance de la classe Button qui a pour propriétés : 
+          <pre>
+            private button_section: HTMLElement;
+            private title: string;
+            private button_elt: HTMLElement;
+          </pre>
+          et pour méthode
+          <pre>
+            render()
+            generateObservableFromClick():Observable<number> 
+              subscribeObservable(obs$: Observable<number>):void
+          </pre>
+          <a
+            target="_blank"
+            href="https://www.learnrxjs.io/learn-rxjs/operators/creation/fromevent"
+            >Lisez la documentation.</a
+          >
+        </p>
+        <p>
+          Vous créez ensuite une classe "Counter" qui a pour propriétés :
+          <pre>
+            private button_section: HTMLElement;
+            private button_elt: HTMLElement;
+          </pre>
+          et pour méthodes : 
+          <pre>
+            render()
+            subscribeObservable(obs$: Observable<any>)
+          </pre>
+          Créez avec un décalage dans le temps d'au moins une seconde deux "compteurs" <br><br>
+          Faites en sorte :
+          <ul>
+            <li>qu'à chaque clic, l'observable créé par generateObservableFromClick() renvoie le nombre de clics reçus par le dit bouton. Vous utilisez pour cela les fonctions pipe, map, et scan.</li>
+            <li>que chacun des compteurs affiche le nombre de clics</li>
+            <li>que l'observable soit d'abord un "cold observable" puis un "hot observable" à l'aide de la fonction shareReplay()</li>
+          </ul>
+        </p>
+
+      </section>
+      <section id="books">
+        <h2>Observables provenant d'une requête fetch</h2>
+        <p>
+          A l'aide des fonctions fromFetch, pipe, switchMap et shareReplay,
+          construisez une fonction buildRequestObservale() de la class Data qui
+          renvoie un "hot observable" qui renvoie lui même le retour du dernier
+          appel de fetch.
+        </p>
+      </section>
+      
+    </div>
+  </body>
 </html>
