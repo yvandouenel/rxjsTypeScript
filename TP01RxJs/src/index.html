@@ -10,6 +10,7 @@
       <h1>TP Observables</h1>
       <section id="own-observable">
         <h2>Observable from scratch</h2>
+        
         <p>Créez votre propre observable via l'appel du constructeur (new Observable()).<br>Utilisez la fonction setInterval pour que l'obersvable "émette" une valeur (de 0 à 9) toutes les secondes. <br> Après 10 émissions, utilisez la méthode complete pour stopper l'observable. <br> Souscrivez à cet observable et faites en sorte que cette souscription permette :
         <ul>
           <li>d'afficher dans la console la valeur chaque fois qu'elle est émise</li>
@@ -21,7 +22,7 @@
       <section id="button">
         <h2>Observables provenant d'un événement</h2>
         <p>
-          Vous allez créer un bouton ayant pour label "Bouton cliquable" qui sera la source d'un observable. Le bouton est une instance de la classe Button qui a pour propriétés : 
+          Vous allez créer un bouton ayant pour label "+ 1" qui sera la source d'un observable. Le bouton est une instance de la classe Button qui a pour propriétés : 
           <pre>
             private button_section: HTMLElement;
             private title: string;
@@ -50,11 +51,11 @@
             render()
             subscribeObservable(obs$: Observable<any>)
           </pre>
-          Créez avec un décalage dans le temps d'au moins une seconde deux "compteurs" <br><br>
+          Créez avec un décalage dans le temps d'au moins 2 secondes deux "compteurs" <br><br>
           Faites en sorte :
           <ul>
             <li>qu'à chaque clic, l'observable créé par generateObservableFromClick() renvoie le nombre de clics reçus par le dit bouton. Vous utilisez pour cela les fonctions pipe, map, et scan.</li>
-            <li>que chacun des compteurs affiche le nombre de clics</li>
+            <li>que chacun des compteurs affiche le nombre de clics (il faudra attendre que le premier bouton soit présent)</li>
             <li>que l'observable soit d'abord un "cold observable" puis un "hot observable" à l'aide de la fonction shareReplay()</li>
           </ul>
         </p>

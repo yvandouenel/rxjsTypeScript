@@ -1,0 +1,7 @@
+{
+  "books": [
+    { "id": 1, "title": "Les misérables", "author": "Victor Hugo" },
+    { "id": 2, "title": "La terre", "author": "Emile Zola" }
+  ]
+  
+}

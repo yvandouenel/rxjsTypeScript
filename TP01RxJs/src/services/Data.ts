@@ -11,6 +11,7 @@ export class Data {
     this.list = this.buildRequestObservale();
   }
   buildRequestObservale() {
+    console.log('Nouvelle requête http avec fetch');
     return fromFetch("http://localhost:3000/books").pipe(
       // switchMap : la seule réponse qui nous intéresse est la dernière
       switchMap((response) => {
@@ -24,7 +25,6 @@ export class Data {
       shareReplay(1),
       catchError((err) => {
         console.error(err)
-    
         return of({ error: true, message: err.message })
       })
     );
