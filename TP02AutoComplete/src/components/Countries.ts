@@ -1,6 +1,7 @@
 import { Observable } from "rxjs";
 import CountryInterface from "../interfaces/CountryInterface";
 import { createMarkup } from "../utils/utils";
+
 export default class Countries {
   domParent;
 
@@ -18,6 +19,7 @@ export default class Countries {
         console.log("Observable completed");
       },
     });
+    
   }
   render(countries: CountryInterface[]) {
     console.log(`countries`, countries);

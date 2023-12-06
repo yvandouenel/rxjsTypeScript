@@ -5,8 +5,11 @@ import {
   debounceTime,
   distinctUntilChanged,
   switchMap,
+  catchError
 } from "rxjs/operators";
 import CountryInputInterface from "../interfaces/CoutryInputInterface";
+import ErrorInterface from "../interfaces/ErrorInterface";
+
 import getData from "../services/getData";
 import {createMarkup} from '../utils/utils'
 
@@ -42,6 +45,12 @@ export default class CountryInput implements CountryInputInterface {
       filter((name) => name.length > 2),
       switchMap((name) => {
         return getData(name);
+      }),
+      catchError((error: any) => {
+        console.error('Erreur attrapée dans CountryInput :', error);
+        // Gestion de l'erreur
+        // On peut retourner un nouvel observable si l'on veut faire en sorte que l'erreur ne termine pas l'observable
+        return of([]);
       })
     );
     //const subscribe = source$.subscribe(val => console.log(val));
