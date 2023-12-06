@@ -2,7 +2,7 @@ import { Observable } from "rxjs";
 import CountryInterface from "../interfaces/CountryInterface";
 import { createMarkup } from "../utils/utils";
 
-export default class Countries {
+export default class CountriesListComponent {
   domParent;
 
   constructor(

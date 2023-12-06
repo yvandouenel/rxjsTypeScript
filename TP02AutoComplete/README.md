@@ -1,3 +1,9 @@
+# Introduction
+Ce TP a pour but d'utiliser les observables à 2 dimensions : 
+- la première dimension provient de l'événement input sur un input de type text
+- la deuxième dimension provient d'un fetch sur l'api https://restcountries.com/v3.1/name/
+
+En parralèle, l'application met en place un service de gestion des erreurs avec un multicasting pour que plusieurs composants puissent s'y abonner.
 # Installation
 ```shell
 npm install

@@ -8,12 +8,11 @@ import {
   catchError
 } from "rxjs/operators";
 import CountryInputInterface from "../interfaces/CoutryInputInterface";
-import ErrorInterface from "../interfaces/ErrorInterface";
 
-import getData from "../services/getData";
+import getCountries from "../services/getCountries";
 import {createMarkup} from '../utils/utils'
 
-export default class CountryInput implements CountryInputInterface {
+export default class CountryInputComponent implements CountryInputInterface {
   domParent;
   input;
   countryList$;
@@ -44,7 +43,7 @@ export default class CountryInput implements CountryInputInterface {
       }),
       filter((name) => name.length > 2),
       switchMap((name) => {
-        return getData(name);
+        return getCountries(name);
       }),
       catchError((error: any) => {
         console.error('Erreur attrapée dans CountryInput :', error);
