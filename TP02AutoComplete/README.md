@@ -58,7 +58,7 @@ module.exports = {
   plugins: [new HtmlWebpackPlugin({ template: __dirname + '/src/index.html' })],
 };
 ```
-## 5 Créer le répertoire src et placez à l'intérieur les fichiers index.html et index.ts
+## 5 Créer le répertoire src et placer à l'intérieur les fichiers index.html et index.ts
 ## 6 modifier le fichier package.json
 ```json
 {
