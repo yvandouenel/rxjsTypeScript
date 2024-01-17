@@ -11,12 +11,15 @@ export default class CountriesListComponent {
   ) {
     this.domParent = domParent;
     countryList$.subscribe({
-      next: (countries: CountryInterface[]) => this.render(countries),
+      next: (countries: CountryInterface[]) => {
+        console.log(`dans le next CountriesListComponent`);
+        this.render(countries)
+      },
       error: (err: any) => {
-        console.error("An error occurred:", err);
+        console.error("dans le error de  CountriesListComponent:", err);
       },
       complete: () => {
-        console.log("Observable completed");
+        console.log("dans le complete de CountriesListComponent");
       },
     });
     

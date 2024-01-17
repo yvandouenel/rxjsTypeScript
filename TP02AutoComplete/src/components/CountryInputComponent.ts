@@ -1,6 +1,5 @@
-import { Observable, fromEvent, of } from "rxjs";
+import {  fromEvent, of } from "rxjs";
 import {
-  map,
   filter,
   debounceTime,
   distinctUntilChanged,
@@ -9,7 +8,7 @@ import {
 } from "rxjs/operators";
 import CountryInputInterface from "../interfaces/CoutryInputInterface";
 
-import getCountries from "../services/getCountries";
+import loadCountries from "../services/loadCountries";
 import {createMarkup} from '../utils/utils'
 
 export default class CountryInputComponent implements CountryInputInterface {
@@ -34,7 +33,7 @@ export default class CountryInputComponent implements CountryInputInterface {
   getObservableCountries() {
     //create observable that emits input events
     const source$ = fromEvent(this.input, "input").pipe(
-      debounceTime(500),
+      debounceTime(1000),
       distinctUntilChanged(),
       switchMap((ev) => {
         if (ev.target instanceof HTMLInputElement ) {
@@ -43,7 +42,7 @@ export default class CountryInputComponent implements CountryInputInterface {
       }),
       filter((name) => name.length > 2),
       switchMap((name) => {
-        return getCountries(name);
+        return loadCountries(name);
       }),
       catchError((error: any) => {
         console.error('Erreur attrapée dans CountryInput :', error);
